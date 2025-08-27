@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       - name: Cargar artefacto
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist # Asegúrate de que esta ruta sea la carpeta de salida de tu build.
 
