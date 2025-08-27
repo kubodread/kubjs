@@ -3,20 +3,21 @@ name: Implementar en páginas de Github
 on:
   push:
     branches:
-      - main # O la rama principal de tu proyecto. Cambia 'develop' por 'main' o la rama que uses para tu proyecto.
-
+      - main
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-
-
 jobs:
-  build:
-    name: Construir
+  deploy_pages:
+    name: Implementar en GitHub Pages
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Obtener repositorio
         uses: actions/checkout@v4
@@ -26,27 +27,17 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Instalar paquetes y construir aplicación
-        run: |
-          npm ci
-          npm run build
+      - name: Instalar dependencias
+        run: npm ci
 
-      - name: Cargar artefacto
+      - name: Construir la aplicación
+        run: npm run build
+
+      - name: Cargar artefacto para despliegue
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist # Asegúrate de que esta ruta sea la carpeta de salida de tu build.
 
-  deploy:
-    name: Implementar aplicación
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
+      - name: Implementar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
