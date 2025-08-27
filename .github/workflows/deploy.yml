@@ -1,59 +1,44 @@
-name: kubiotecjs  # Defines the name of the GitHub Actions workflow.
+name: Implementar en páginas de Github
 
 on:
-    push:
-        branches:
-            - develop  # Triggers the workflow on each push to the 'develop' branch.
+  push:
+    branches:
+      - main # O la rama principal de tu proyecto. Cambia 'develop' por 'main' o la rama que uses para tu proyecto.
 
 jobs:
-    build:
-      name: Build  # Defines the name of the build job.
-      runs-on: ubuntu-latest  # Specifies the operating system for the job.
+  build:
+    name: Construir
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
 
-      steps:
-        - name: Checkout Repo  # Checks out the repository.
-          uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16.x
 
-        - name: Create Node Environment  # Sets up Node.js environment.
-          uses: actions/setup-node@v4
-          with:
-            node-version: 16.x
+      - name: Instalar paquetes y construir aplicación
+        run: |
+          npm ci
+          npm run build
 
-        - name: Install Packages and Build Application  # Installs npm packages and builds the Vue.js application.
-          run: |
-            npm ci
-            npm run build
+      - name: Cargar artefacto
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./dist # Asegúrate de que esta ruta sea la carpeta de salida de tu build.
 
-        - name: Setup Pages  # Configures pages for deployment.
-          id: pages
-          uses: actions/configure-pages@v3
-
-        - name: Build with Jekyll  # Builds the application with Jekyll.
-          uses: actions/jekyll-build-pages@v1
-          with:
-            source: ./dist/
-            destination: ./_site
-
-        - name: Upload artifact  # Uploads the build artifact.
-          uses: actions/upload-pages-artifact@v2
-
-    deploy:
-      name: Deploy Application  # Defines the name of the deployment job.
-
-      # Add a dependency to the build job
-      needs: build  # Specifies that the deployment job depends on the successful completion of the build job.
-
-      # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-      permissions:
-        pages: write      # Grants write permission to deploy to Pages.
-        id-token: write   # Grants write permission to verify the deployment source.
-
-      environment:
-        name: github-pages  # Specifies the environment for deployment.
-        url: ${{ steps.deployment.outputs.page_url }}  # Retrieves the deployment URL from the previous deployment step.
-
-      runs-on: ubuntu-latest  # Specifies the operating system for the deployment job.
-      steps:
-        - name: Deploy to GitHub Pages  # Deploys the application to GitHub Pages.
-          id: deployment
-          uses: actions/deploy-pages@v2  # Specifies the version of the deployment action.
+  deploy:
+    name: Implementar aplicación
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
