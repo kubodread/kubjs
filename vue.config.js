@@ -1,5 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true
-  publicPath: '/kubiotecjs/'
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/kubiotecjs/'
+    : '/'
 })
