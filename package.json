@@ -1,7 +1,8 @@
 {
-  "name": "kubjs",
+  "name": "kubiotecjs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tucuenta.github.io/kubiotecjs/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
