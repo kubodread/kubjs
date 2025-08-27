@@ -5,6 +5,14 @@ on:
     branches:
       - main # O la rama principal de tu proyecto. Cambia 'develop' por 'main' o la rama que uses para tu proyecto.
 
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+
 jobs:
   build:
     name: Construir
