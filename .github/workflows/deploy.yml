@@ -20,12 +20,10 @@ jobs:
 
     steps:
       - name: Obtener repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16.x
+        uses: actions/setup-node@v3.8.1 # v3.8.1
 
       - name: Instalar dependencias
         run: npm ci
@@ -34,11 +32,10 @@ jobs:
         run: npm run build
 
       - name: Cargar artefacto para despliegue
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3 # v3
         with:
-          path: ./dist # Asegúrate de que esta ruta sea la carpeta de salida de tu build.
+          path: ./dist
 
       - name: Implementar en GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
-
+        uses: actions/deploy-pages@v2 # v2
