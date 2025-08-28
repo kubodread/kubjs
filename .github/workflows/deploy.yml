@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3.8.1 # v3.8.1
+        uses: actions/setup-node@60edb4e183427909c2a63273e6a47347a7596c09 # v3.8.1
 
       - name: Instalar dependencias
         run: npm ci
@@ -32,10 +32,8 @@ jobs:
         run: npm run build
 
       - name: Cargar artefacto para despliegue
-        uses: actions/upload-pages-artifact@v3 # v3
-        with:
-          path: ./dist
+        uses: actions/upload-pages-artifact@b3341b52af7634f195d54e4c29c54625b1111000 # v3
 
       - name: Implementar en GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2 # v2
+        uses: actions/deploy-pages@29486c8f4974f0d6110f01c385b0d0c896919c67 # v2
