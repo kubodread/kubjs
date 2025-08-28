@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@60edb4e183427909c2a63273e6a47347a7596c09 # v3.8.1
+        uses: actions/setup-node@9d5b4109b83e47f4f6103135c3453b006c45989d # v4.0.0
 
       - name: Instalar dependencias
         run: npm ci
