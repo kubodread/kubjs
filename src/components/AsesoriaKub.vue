@@ -94,7 +94,7 @@ button {
     max-width: 350px; /* Evita que crezca demasiado */
     display: flex; 
     justify-content:center;
-
+    border: 0;
   }
 
 

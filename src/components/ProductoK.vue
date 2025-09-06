@@ -112,4 +112,6 @@ export default {
     gap: 20px;           /* Añade espacio entre los productos */
   }
 }
+
+
 </style>

@@ -57,9 +57,11 @@ export default {
 }
 
   .inicioEntrada {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc;
   padding: 35px;
-  margin: 10px;
+  margin: 10px; */
+  padding-top: 5px;
+  border: solid 1px;
   border-radius: 8px;
   text-align: center;
   display: flex;
@@ -151,7 +153,7 @@ display: flex;
     /* Calcula el ancho para que quepan 2 o 3 fichas en una fila.
       calc() es muy útil para esto.
     */
-    width: calc(33.33% - 20px); /* 33.33% - el espacio de gap */
+    /* width: calc(33.33% - 20px); 33.33% - el espacio de gap */
     max-width: 350px; /* Evita que crezca demasiado */
     display: flex; 
     justify-content:center;

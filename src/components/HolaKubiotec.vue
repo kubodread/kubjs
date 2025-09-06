@@ -1,17 +1,20 @@
 <template>
-  <div  class="contenedorK"> 
-  <div>
-  <img class="img1" alt="Vue logo" src='../assets/icon-512x512.png'>
-    <h1>¡Bienvenido a Kubiotec!</h1>
-  </div>
-    <div>
-      <article>
-      Comprometido en encontrar soluciones adecuadas, innovadoras y eficientes, cumpliendo con las normas para cuidar y proteger nuestro planeta.
-      <br><br><br>
-      </article>
+  <div  class="contenedorK "> 
+  <div class="contk1">
+    <div class="">
+    <img class="img1" alt="Vue logo" src='../assets/icon-512x512.png'>
+      <h1>¡Bienvenido a Kubiotec!</h1>
     </div>
+      <div class="">
+        <article>
+        Comprometido en encontrar soluciones adecuadas, innovadoras y eficientes, cumpliendo con las normas para cuidar y proteger nuestro planeta.
+        <br><br><br>
+        </article>
+      </div>
+  </div>
 
-              <div class="inicioEntrada">
+<div class="contk1">
+                <div class="inicioEntrada">
                 <article>
                     <h1>
                        &#128198; &#128209; Monitorea tu composta con esta app 	&#128200;&#128201;&#128202;
@@ -26,8 +29,12 @@
                       <a href="https://kubodread.github.io/kubiotec/compostaje.html" target="_blank"> Visita la App Web </a>
                 </article>
               </div>
+</div>
 
-<TextoApp /> 
+<div class="contk1">
+<TextoApp />   
+</div>
+
 
   </div>
 
@@ -61,9 +68,8 @@ h1 {
     display: flex;
     justify-content: center;
     padding:  15px 0;
-    border:solid 1px;
     border-radius: 1em;
-    margin: 5px
+    margin: 5px;
   }
 
 .contenedorK{
@@ -74,6 +80,9 @@ h1 {
     flex-direction: column;
     justify-content: center;
     margin: 5px 0 5px 0;
-
+  overflow: auto;
 }
+.contk1 {
+}
+
 </style>
